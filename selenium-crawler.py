@@ -6,19 +6,22 @@ import pandas as pd
 import csv
 import time
 
-
+#Initialize the list where we store our results
 results = []
 
+#Setup webdriver
 driver = webdriver.Chrome()
+
+#Load first URL
 url = "http://www.tiffathai.org/member/index.php"
 driver.get(url)
 
-wait = WebDriverWait(driver, 10)
-
+#Initialize other lists we will use for storing company URLs
 seleniumURL = []
 companyURL = []
 
-
+#Change range (1,12) to how many pages the list has
+#Loop can be made dynamic like: while(nextPage == True)
 for x in range(1,12):
     #Get all links on this page
     seleniumURL = driver.find_elements_by_css_selector("body > table:nth-child(4) > tbody > tr:nth-child(3) > td > table > tbody > tr > td > table > tbody > tr > td > nobr > a")
